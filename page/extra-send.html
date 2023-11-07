@@ -1,16 +1,116 @@
-
-
 <!DOCTYPE html>
-<title>게시 | mago market</title>
+<html>
 <head>
+  <title>게시 | mago market</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <style>
+    .bt {
+      text-align: center;
+      max-width: 50%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .file-label {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .file-label:hover {
+      background-color: #0056b3;
+    }
+    .file-button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .file-button:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    #image_container {
+      text-align: center;
+    }
+    #image_container img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .slider {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        display: none; /* 초기에는 숨김 */
+    }
+    .slide {
+        text-align: center;
+        max-width: 100%;
+        position: relative;
+        display: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img {
+        max-width: 50%;
+        height: auto;
+        border: solid 1px;
+    }
+    .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 1;
+        display: block;
+    }
+    .slider-button-left {
+        left: 10px;
+    }
+    .slider-button-right {
+        right: 10px;
+    }
+  </style>
 </head>
 <body>
-  <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"/>
-  <div id="image_container"></div>
+  <form class="bt">
+    <div id="image_container" style="text-align: center;"></div>
 
+    <!-- text바 -->
+    <input type="text" id="text" placeholder="Write something..." />
+
+    <!-- submit 버튼 -->
+    <button class="file-button" type="button" onclick="submitPost()">Submit</button>
+
+    <label for="image" class="file-label">
+      <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" style="display: none;">
+      Choose an image
+    </label>
+  </form>
+  
   <script>
     function setThumbnail(event) {
       var reader = new FileReader();
@@ -19,10 +119,77 @@
         var img = document.createElement("img");
         img.setAttribute("src", event.target.result);
         document.querySelector("div#image_container").appendChild(img);
+        
+        // Count the number of images displayed
+        var imageCount = document.querySelectorAll("div#image_container img").length;
+        
+        // Check if the imageCount is greater than 1 to show the slider
+        if (imageCount > 1) {
+          document.querySelector(".slider").style.display = "block";
+          document.querySelector(".slider-button").style.display = "block";
+        } else {
+          document.querySelector(".slider").style.display = "none";
+          document.querySelector(".slider-button").style.display = "none";
+        } 
       };
 
       reader.readAsDataURL(event.target.files[0]);
     }
+
+    // Function to handle the post submission
+    function submitPost() {
+      var textValue = document.getElementById("text").value;
+      var imageSrc = document.querySelector("div#image_container img").getAttribute("src");
+
+      // You can now use 'textValue' and 'imageSrc' to send the data to your server or perform any other actions.
+      // For this example, we'll simply display an alert with the text and image URL.
+      alert("Text: " + textValue + "\nImage URL: " + imageSrc);
+    }
+  </script>
+
+  <div class="slider">
+    <div class="slide">
+        <img src="file:///C:/Users/User/Downloads/Asi_01.png">
+    </div>
+    <div class="slide">
+        <img src="file:///C:/Users/User/Documents/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/KakaoTalk_20230713_092205297.jpg">
+    </div>
+    <div class="slide">
+        <img src="file:///C:/Users/User/Pictures/Saved%20Pictures/%EB%A7%88%EB%A7%88.png">
+    </div>
+    <button id="prevBtn" class="slider-button slider-button-left">이전</button>
+    <button id="nextBtn" class="slider-button slider-button-right">다음</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const slideCount = slides.length;
+
+    function showSlide(n) {
+        slides.forEach(slide => slide.style.display = 'none');
+        slides[n].style.display = 'block';
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        showSlide(currentSlide);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentSlide);
+
+        const nextButton = document.getElementById('nextBtn');
+        const prevButton = document.getElementById('prevBtn');
+
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+    });
   </script>
 </body>
 </html>
