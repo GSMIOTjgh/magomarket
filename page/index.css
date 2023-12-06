@@ -1,538 +1,173 @@
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #f7f8fc;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Common Styles for form elements */
-select, input, button, textarea {
-    border: 0;
-    outline: 0 !important;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Responsive Design */
-.somago {
-    border: 1px solid rgb(187, 186, 186);
+.border{
+    width: 505px;
+    height: 701px;
+    border: solid 0.5px #878787;
+    margin: 2vw;
+    padding: 36px 47px 120px 35px;
     border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-    background-color: rgb(255, 255, 255);
-    width: 90%; /* Responsive width */
-    max-width: 600px;
-    margin: 10% auto; /* Responsive margins */
-    position: relative;
-    display: flex;
-    flex-direction: column;
 }
 
-.c7j {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: #a6a6a6;
-    font-size: 1.5vw; /* Responsive font size */
-}
-
-.c1o:valid, .c1o:focus {
-    border-bottom: 2px solid rgb(84, 153, 217);
-}
-
-.c1o {
-    width: 100%;
-    height: 40px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-    background: transparent;
-    font-size: 1.2vw; /* Responsive font size */
-}
-
-.mg{
-    body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #f7f8fc;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Common Styles for form elements */
-select, input, button, textarea {
-    border: 0;
-    outline: 0 !important;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Responsive Design */
-.somago {
-    border: 1px solid rgb(187, 186, 186);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-    font-size: 3vw; /* Responsive font size */
-    background-color: rgb(255, 255, 255);
-    width: 90%; /* Responsive width */
-    max-width: 600px;
-    margin: 10% auto; /* Responsive margins */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.c7j {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: #a6a6a6;
-    font-size: 1.5vw; /* Responsive font size */
-}
-
-.c1o:valid, .c1o:focus {
-    border-bottom: 2px solid rgb(84, 153, 217);
-}
-
-.c1o {
-    width: 100%;
-    height: 40px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-    background: transparent;
-    font-size: 1.2vw; /* Responsive font size */
-}
-
-.c130 {
-    margin-top: 2%; /* Responsive margin value */
-    position: relative;
-}
-
-.mg{
-    color: rgb(47, 134, 215);
-    margin-left: 1vw;
-    cursor: pointer;
-}
-
-.c16 {
-    display: flex;
-    flex-direction: column;
-    width: 90%; /* Responsive width */
-    max-width: 432px;
-    height: 90vh; /* Responsive height */
-    font-size: 3vw; /* Responsive font size */
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(208, 208, 208);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-}
-
-.c9z {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2%; /* Responsive gap value */
-}
-
-.c1tj {
-    font-weight: 400;
-    font-size: 1vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-}
-
-.c19 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: rgb(166, 166, 166);
-    font-size: 1.5vw; /* Responsive font size */
-    cursor: pointer;
-}
-
-.c9z p {
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-    text-align: center;
-    cursor: pointer;
-}
-
-.c9z button {
-    width: 100%;
-    height: 44px;
-    background: rgb(84, 153, 217);
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
-    .somago {
-        width: 95%; /* Adjust for smaller screens */
-        padding: 8% 4% 6%;
-    }
-    
-    .c16 {
-        width: 95%;
-        padding: 8% 4% 6%;
-    }
-    
-    .c1o {
-        font-size: 1.5vw;
-    }
-}
-}
-
-.c130 {
-    margin-top: 2%; /* Responsive margin value */
-    position: relative;
-}
-
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #f7f8fc;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Common Styles for form elements */
-select, input, button, textarea {
-    border: 0;
-    outline: 0 !important;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Responsive Design */
-.somago {
-    border: 1px solid rgb(187, 186, 186);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-    background-color: rgb(255, 255, 255);
-    width: 90%; /* Responsive width */
-    max-width: 600px;
-    margin: 10% auto; /* Responsive margins */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.c7j {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: #a6a6a6;
-    font-size: 1.5vw; /* Responsive font size */
-}
-
-.c1o:valid, .c1o:focus {
-    border-bottom: 2px solid rgb(84, 153, 217);
-}
-
-.c1o {
-    width: 100%;
-    height: 40px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-    background: transparent;
-    font-size: 1.2vw; /* Responsive font size */
-}
-
-.mg{
-    body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: #f7f8fc;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-}
-
-/* Common Styles for form elements */
-select, input, button, textarea {
-    border: 0;
-    outline: 0 !important;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Responsive Design */
-.somago {
-    border: 1px solid rgb(187, 186, 186);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-    font-size: 3vw; /* Responsive font size */
-    background-color: rgb(255, 255, 255);
-    width: 90%; /* Responsive width */
-    max-width: 600px;
-    margin: 10% auto; /* Responsive margins */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.c7j {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: #a6a6a6;
-    font-size: 1.5vw; /* Responsive font size */
-}
-
-.c1o:valid, .c1o:focus {
-    border-bottom: 2px solid rgb(84, 153, 217);
-}
-
-.c1o {
-    width: 100%;
-    height: 40px;
-    border-bottom: 1px solid rgb(215, 215, 215);
-    background: transparent;
-    font-size: 1.2vw; /* Responsive font size */
-}
-
-.c130 {
-    margin-top: 2%; /* Responsive margin value */
-    position: relative;
-}
-
-.mg{
-    color: rgb(47, 134, 215);
-    margin-left: 1vw;
-    cursor: pointer;
-}
-
-.c16 {
-    display: flex;
-    flex-direction: column;
-    width: 90%; /* Responsive width */
-    max-width: 432px;
-    height: 90vh; /* Responsive height */
-    font-size: 3vw; /* Responsive font size */
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(208, 208, 208);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-}
-
-.c9z {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2%; /* Responsive gap value */
-}
-
-.c1tj {
-    font-weight: 400;
-    font-size: 1vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-}
-
-.c19 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: rgb(166, 166, 166);
-    font-size: 1.5vw; /* Responsive font size */
-    cursor: pointer;
-}
-
-.c9z p {
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-    text-align: center;
-    cursor: pointer;
-}
-
-.c9z button {
-    width: 100%;
-    height: 44px;
-    background: rgb(84, 153, 217);
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
-    .somago {
-        width: 95%; /* Adjust for smaller screens */
-        padding: 8% 4% 6%;
-    }
-    
-    .c16 {
-        width: 95%;
-        padding: 8% 4% 6%;
-    }
-    
-    .c1o {
-        font-size: 1.5vw;
-    }
-}
-
-.c130 {
-    margin-top: 2%; /* Responsive margin value */
-    position: relative;
-}
-
-.mg{
-    color: rgb(84, 153, 217);
-    font-size: 2vw;
-}
-
-.c16 {
-    display: flex;
-    flex-direction: column;
-    width: 90%; /* Responsive width */
-    max-width: 432px;
-    height: 90vh; /* Responsive height */
-    font-size: 3vw; /* Responsive font size */
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(208, 208, 208);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-}
-
-.c9z {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2%; /* Responsive gap value */
-}
-
-.c1tj {
-    font-weight: 400;
-    font-size: 1vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-}
-
-.c19 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: rgb(166, 166, 166);
-    font-size: 1.5vw; /* Responsive font size */
-    cursor: pointer;
-}
-
-.c9z p {
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-    text-align: center;
-    cursor: pointer;
-}
-
-.c9z button {
-    width: 100%;
-    height: 44px;
-    background: rgb(84, 153, 217);
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
-    .somago {
-        width: 95%; /* Adjust for smaller screens */
-        padding: 8% 4% 6%;
-    }
-    
-    .c16 {
-        width: 95%;
-        padding: 8% 4% 6%;
-    }
-    
-    .c1o {
-        font-size: 1.5vw;
-    }
-}
-
-.c16 {
-    display: flex;
-    flex-direction: column;
-    width: 90%; /* Responsive width */
-    max-width: 432px;
-    height: 90vh; /* Responsive height */
-    font-size: 3vw; /* Responsive font size */
-    background: rgb(255, 255, 255);
-    border: 1px solid rgb(208, 208, 208);
-    border-radius: 10px;
-    padding: 5% 3% 4%; /* Responsive padding values */
-}
-
-.c9z {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2%; /* Responsive gap value */
-}
-
-.c1tj {
-    font-weight: 400;
-    font-size: 1vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-}
-
-.c19 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    color: rgb(166, 166, 166);
-    font-size: 1.5vw; /* Responsive font size */
-    cursor: pointer;
-}
-
-.c9z p {
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(146, 146, 146);
-    text-align: center;
-    cursor: pointer;
-}
-
-.c9z button {
-    width: 100%;
-    height: 44px;
-    background: rgb(84, 153, 217);
-    border-radius: 10px;
-    font-weight: 400;
-    font-size: 1.2vw; /* Responsive font size */
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
-
-/* Media Queries for Responsive Design */
-@media screen and (max-width: 768px) {
-    .somago {
-        width: 95%; /* Adjust for smaller screens */
-        padding: 8% 4% 6%;
-    }
-    
-    .c16 {
-        width: 95%;
-        padding: 8% 4% 6%;
-    }
-    
-    .c1o {
-        font-size: 1.5vw;
-    }
-}
+.Welcome- {
+    width: 132px;
+    height: 38px;
+    flex-grow: 0;
+    margin: 0 291px 29px 0;
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  .Sign-in-to {
+    width: 142px;
+    height: 47px;
+    flex-grow: 0;
+    margin: 0 118px 1px 0;
+    font-family: Poppins;
+    font-size: 31px;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  .Now-come-get-some-new-ideas {
+    width: 260px;
+    height: 24px;
+    flex-grow: 0;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align:end;
+    color: #000;
+  }
+  .username {
+    width: 423px;
+    height: 92px;
+    flex-grow: 0;
+    margin: 0 0 38px;
+  }
+  .Un {
+    width: 390px;
+    height: 24px;
+    margin: 0 33px 9px 0;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  .inputu {
+    width: 223px;
+    height: 29px;
+    margin: 9px 0 0;
+    padding: 19px 248px 19px 27px;
+    border-radius: 6px;
+    border: solid 0.6px #282828;
+    background-color: #fff;
+    vertical-align: middle;
+  }
+  .Enter-your-user-name {
+    width: 223px;
+    height: 29px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    vertical-align: middle;
+    color: #ababab;
+  }
+  .classroom{
+    margin: 80px 0 0;
+  }
+  .password{
+    width: 423px;
+    height: 92px;
+    flex-grow: 0;
+    margin: 0 0 38px;
+  }
+  .ps {
+    width: 390px;
+    height: 24px;
+    margin: 0 33px 9px 0;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  .inputp {
+    width: 223px;
+    height: 29px;
+    margin: 9px 0 0;
+    padding: 19px 248px 19px 27px;
+    border-radius: 6px;
+    border: solid 0.6px #282828;
+    background-color: #fff;
+  }
+  .Loginbar {
+    width: 500px;
+    height: 67px;
+    flex-grow: 0;
+    margin: 38px 0 0;
+    padding: 17px 190px 16px;
+    border-radius: 6px;
+    background-color: #000;
+    color: white;
+  }
+  .Login{
+    width: 43px;
+    height: 24px;
+    flex-grow: 0;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #fff;
+  }
+  .classroom2{
+    margin: 50px 0 0;
+  }
+  .dd{
+    margin: 20px 0 0;
+  }
+  .Rememebr-me {
+    width: 90px;
+    height: 18px;
+    flex-grow: 0;
+    margin: 0 200px 0 10px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
