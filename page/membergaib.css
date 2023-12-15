@@ -51,6 +51,12 @@
     text-align:end;
     color: rgb(85, 170, 231);
   }
+  .usernickname {
+    width: 423px;
+    height: 92px;
+    flex-grow: 0;
+    margin: 0 0 38px;
+  }
   .username {
     width: 423px;
     height: 92px;
