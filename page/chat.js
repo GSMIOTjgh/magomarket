@@ -1,137 +1,210 @@
-    .chat_wrap .header {
-        font-size: 14px;
-        padding: 15px 0;
-        background: #50c4fa;
-        color: rgb(0, 0, 0);
-        text-align: center;
+const Chat = (function() {
+    const myName = "건희";
+
+    function init() {
+        // Enter 키를 눌렀을 때 메시지 전송
+        $(document).on('keydown', '#messageInput', function(e) {
+            if (e.keyCode == 13 && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        // 전송 버튼 클릭 시 메시지 전송
+        $(document).on('click', '#sendMessageButton', function() {
+            sendMessage();
+        });
+
+        // 이미지 업로드 input의 변경 이벤트 처리
+        $(document).on('change', '#imageInput', function () {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imageDataUrl = e.target.result;
+                    sendImage(imageDataUrl); // 이미지 업로드 시 이미지 전송 함수 호출
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
     }
 
-    .chat_wrap .chat {
-        position: relative; /* 추가된 부분 */
-        padding-bottom: 120px; /* 조정된 부분 */
-        overflow-x: auto;
-        overflow-y: scroll; /* 스크롤 활성화 */
-        max-height: calc(100vh - 100px); /* 최대 높이 지정 */
-        overflow-x: hidden;
-        overflow-y: hidden;
+    function createMessageTag(LR_className, senderName, message) {
+        const chatLi = $('div.chat.format ul li').clone();
+        chatLi.addClass(LR_className);
+        chatLi.find('.sender span').text(senderName);
+        chatLi.find('.message span').text(message);
+        return chatLi;
     }
 
-    .chat_wrap .chat ul {
-        width: 100%;
-        list-style: none;
+    // 이미지를 채팅창에 추가하는 부분
+    function appendImageTag(LR_className, senderName, imageUrl) {
+        const chatLi = createMessageTag(LR_className, senderName, "");
+        chatLi.find('.message span').html(`<img src="${imageUrl}" alt="이미지">`);
+        $('div.chat:not(.format) ul').append(chatLi);
+        // 스크롤 송출 시간.
+        setTimeout(scrollToBottom, 0);
     }
 
-    .chat_wrap .chat ul li {
-        width: 100%;
+    // 이미지를 전송하는 함수
+    function sendImage(imageUrl) {
+        const senderName = myName;
+        const data = {
+            "senderName": senderName,
+            "message": "", // 이미지는 텍스트 없이 전송
+            "image": imageUrl // 이미지 주소를 전송
+        };
+        // 여기서 서버로 이미지를 전송하고, 성공적으로 전송된 경우에만 아래 함수 호출
+        appendImageTag("right", senderName, imageUrl);
+        setTimeout(scrollToBottom, 0);
     }
 
-    .chat_wrap .chat ul li.left {
-        text-align: left;
-    }
-
-    .chat_wrap .chat ul li.right {
-        text-align: right;
-    }
-
-    .chat_wrap .chat ul li > div {
-        font-size: 13px;
-    }
-
-    .chat_wrap .chat ul li > div.sender {
-        margin: 15px 40px 0 20px;
-        font-weight: bold;
-    }
-
-    .chat_wrap .chat ul li > div.message {
-        display: inline-block;
-        word-break: break-all;
-        margin: 10px 50px;
-        max-width: 75%;
-        border: 1px solid #888;
-        padding: 10px;
-        border-radius: 5px;
-        background-color: #FCFCFC;
-        color: #555;
-        text-align: left;
-    }
-
-    .chat_wrap .input-div {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background-color: #FFF;
-        text-align: center;
-        border-top: 1px solid #50c4fa;
-    }
-
-    .chat_wrap .input-div > textarea {
-        width: 82%;
-        height: 80px;
-        border: none;
-        padding: 1px;
-        position: absolute;
-        bottom: 0;
-    }
-
-    .textarea {
-        display: block;
-        width: 100%;
-        height: 65px;
-        border: none;
-        padding: 1px;
-    }
-
-    .format {
-        display: none;
-    }
-
-    .bx{
-        width: 100%;
-        height: 100%;
-    }
-
-    /* textarea의 너비를 버튼에 맞게 조절하지 않고 그대로 유지합니다 */
-    .chat_wrap .input-div .textarea {
-        width: 100%;
-    }
-
-    .upload-button {
-        width: 15%;
-        height: 5%;
-        background-color: #50c4fa;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        position: absolute;
-        left: 0.7%;
-        bottom: 85px; /* 조정된 위치 */
-    }
-
-    .exit{
-        bottom: 85px;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-        position: absolute;
-        left: 17%;
-    }
-
-    /* 작은 화면에 대한 반응형 스타일 추가 */
-    @media (max-width: 600px) {
-        .upload-button {
-            width: 80%;
-            height: 8%;
-            top: calc(50vh - (40vh / 2)); /* 조정된 위치 */
-            left: 10%;
+    // 채팅 메시지를 전송하는 함수
+    function sendMessage() {
+        const message = $('#messageInput').val();
+        if (message.trim() !== "") {
+            const senderName = myName;
+            const data = {
+                "senderName": senderName,
+                "message": message
+            };
+            resive(data);
+            clearTextarea();
         }
     }
 
-    /* 중간 크기 화면에 대한 반응형 스타일 추가 */
-    @media (max-width: 768px) {
-        .upload-button {
-            width: 60%;
-            height: 8%;
-            top: calc(60vh - (48vh / 2)); /* 조정된 위치 */
-            left: 10%;
-        }
+    function clearTextarea() {
+        $('#messageInput').val('');
     }
+
+    function resive(data) {
+        const LR = (data.senderName != myName) ? "left" : "right";
+        appendMessageTag(LR, data.senderName, data.message);
+    }
+
+    // 채팅창의 메시지를 추가하는 함수
+    function appendMessageTag(LR_className, senderName, message) {
+        const chatLi = createMessageTag(LR_className, senderName, message);
+        $('div.chat:not(.format) ul').append(chatLi);
+        setTimeout(scrollToBottom, 0);
+    }
+
+    return {
+        'init': init
+    };
+})();
+
+$(function(){
+    Chat.init();
+});
+
+function scrollToBottom() {
+    const chatDiv = document.querySelector('.chat');
+    if (chatDiv) {
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+    }
+}
+
+const chatDiv = document.querySelector('.chat');
+const observer = new MutationObserver((mutationsList) => {
+    scrollToBottom();
+});
+
+observer.observe(chatDiv, { childList: true });
+
+$(document).on('click', '.upload-button', function () {
+    $('#imageInput').click();
+});
+
+$(document).on('change', '#imageInput', function () {
+    const fileInput = document.getElementById('imageInput');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        $.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/send-message',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+    }
+});
+
+function clearImageInput() {
+    $('#imageInput').val('');
+}
+
+// 이미지를 로컬 스토리지에 저장하는 함수
+function saveImageToLocalStorage(imageDataUrl) {
+    localStorage.setItem("profileImage", imageDataUrl);
+}
+
+// 로컬 스토리지에서 이미지를 가져와서 프로필 이미지를 설정하는 함수
+function setProfileImageFromLocalStorage() {
+    var savedProfileImage = localStorage.getItem("profileImage");
+    if (savedProfileImage) {
+        document.getElementById('profileImage').src = savedProfileImage;
+    }
+}
+
+// 이미지를 선택하고 저장하는 함수
+function uploadimg() {
+    var input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+
+    input.onchange = function (event) {
+        var file = event.target.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                var imageDataUrl = e.target.result;
+
+                // 이미지를 로컬 스토리지에 저장
+                saveImageToLocalStorage(imageDataUrl);
+
+                // 프로필 이미지를 설정
+                setProfileImageFromLocalStorage();
+
+                // 이미지 출력 및 스크롤 송출
+                appendImageTag("right", myName, imageDataUrl);
+                setTimeout(scrollToBottom, 0);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    };
+
+    input.click();
+}
+
+// 페이지 로드 시 저장된 이미지를 프로필 이미지로 설정
+window.addEventListener("load", function () {
+    setProfileImageFromLocalStorage();
+});
+
+// 페이지 로드 시 처음 이미지를 선택하여 설정
+document.addEventListener("DOMContentLoaded", function () {
+    // 초기 이미지 출력
+    const savedProfileImage = localStorage.getItem("profileImage");
+    if (savedProfileImage) {
+        setProfileImageFromLocalStorage();
+        appendImageTag("right", myName, savedProfileImage);
+        scrollToBottom();
+    }
+});
