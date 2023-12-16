@@ -98,3 +98,10 @@
     .remove-button:hover {
       background-color: #c82333;
     }
+    .exit{
+      bottom: 85px;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+    }
