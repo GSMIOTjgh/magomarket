@@ -1,4 +1,5 @@
 const Chat = (function() {
+    let fileInput; // 전역 변수로 파일 입력 엘리먼트를 선언합니다.
     const myName = "건희";
 
     function init() {
@@ -162,35 +163,39 @@ function setProfileImageFromLocalStorage() {
 
 // 이미지를 선택하고 저장하는 함수
 function uploadimg() {
-    var input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
+    // 이미 생성된 파일 입력 엘리먼트가 없다면 새로 생성합니다.
+    if (!fileInput) {
+        fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = 'image/*';
 
-    input.onchange = function (event) {
-        var file = event.target.files[0];
+        fileInput.onchange = function (event) {
+            var file = event.target.files[0];
 
-        if (file) {
-            var reader = new FileReader();
+            if (file) {
+                var reader = new FileReader();
 
-            reader.onload = function (e) {
-                var imageDataUrl = e.target.result;
+                reader.onload = function (e) {
+                    var imageDataUrl = e.target.result;
 
-                // 이미지를 로컬 스토리지에 저장
-                saveImageToLocalStorage(imageDataUrl);
+                    // 이미지를 로컬 스토리지에 저장
+                    saveImageToLocalStorage(imageDataUrl);
 
-                // 프로필 이미지를 설정
-                setProfileImageFromLocalStorage();
+                    // 프로필 이미지를 설정
+                    setProfileImageFromLocalStorage();
 
-                // 이미지 출력 및 스크롤 송출
-                appendImageTag("right", myName, imageDataUrl);
-                setTimeout(scrollToBottom, 0);
-            };
+                    // 이미지 출력 및 스크롤 송출
+                    appendImageTag("right", myName, imageDataUrl);
+                    setTimeout(scrollToBottom, 0);
+                };
 
-            reader.readAsDataURL(file);
-        }
-    };
+                reader.readAsDataURL(file);
+            }
+        };
+    }
 
-    input.click();
+    // 생성한 파일 입력 엘리먼트를 클릭하여 파일 창을 엽니다.
+    fileInput.click();
 }
 
 // 페이지 로드 시 저장된 이미지를 프로필 이미지로 설정
