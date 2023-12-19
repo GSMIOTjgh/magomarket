@@ -85,3 +85,22 @@ textarea{
     position: relative;
     bottom: 4.3rem;
 }
+/* 검색 */
+.search {
+    display: flex;
+    justify-content: center;
+}
+.search-bar{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: var(--medium);
+    padding: 15px 0px;
+    border: solid 3px black;
+    width: 100%;
+    text-align: center;
+}
+
+.search-bar::placeholder {
+    color: rgb(0, 0, 0, 0.5);
+    font-size: var(--medium);
+}
