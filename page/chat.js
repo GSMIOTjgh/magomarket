@@ -232,7 +232,7 @@ function createTransaction() {
     // div에 내용 추가 (거래 메시지 내용 추가)
     dynamicDiv.innerHTML = `
         <div class="Transaction" id="Transaction">
-            <span class="tt" name="tt">□□□님이 거래를 시작하려 합니다</span>
+            <span class="tt" name="tt">${myName}님이 거래를 시작하려 합니다</span>
             <div class="moneyplus" id="moneyplus">
                 <input class="money" name="money" autocomplete="off" maxlength="7" minlength="3" required placeholder="가격을 적어주세요(숫자만)">
             </div>
