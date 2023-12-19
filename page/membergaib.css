@@ -1,10 +1,10 @@
 .border{
-    width: 505px;
-    height: 701px;
-    border: solid 0.5px #878787;
-    margin: 2vw;
-    padding: 36px 47px 120px 35px;
-    border-radius: 10px;
+  width: 505px;
+  height: 501px;
+  border: solid 0.5px #000000;
+  padding: 36px 47px 120px 35px;
+  border-radius: 10px;
+  transform:translate(95%,20%);
 }
 
 .Welcome- {
@@ -102,7 +102,7 @@
     color: #ababab;
   }
   .classroom{
-    margin: 65px 0 0;
+    margin: 15px 0 0;
   }
   .password{
     width: 423px;
@@ -137,7 +137,6 @@
     width: 500px;
     height: 67px;
     flex-grow: 0;
-    margin: 38px 0 0;
     padding: 17px 190px 16px;
     border-radius: 6px;
     background-color: #000;
@@ -156,9 +155,7 @@
     letter-spacing: normal;
     color: #fff;
   }
-  .classroom2{
-    margin: 50px 0 0;
-  }
+
   .dd{
-    margin: 20px 0 0;
+    margin: 0 0 0;
   }
