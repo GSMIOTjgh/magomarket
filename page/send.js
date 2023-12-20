@@ -47,14 +47,14 @@ function removeRecentSlide(removedSlideKey) {
 
 function setThumbnail(event) {
   var reader = new FileReader();
-  var imageCount;
+  var imageCount; // 추가: 이미지 개수를 지역 변수로 선언
 
   reader.onload = function (event) {
     var img = document.createElement('img');
     img.setAttribute('src', event.target.result);
     document.querySelector('#image_container').appendChild(img);
 
-    imageCount = document.querySelectorAll('div#image_container img').length;
+    imageCount = document.querySelectorAll('div#image_container img').length; // 수정: 이미지 개수 업데이트
 
     var imageDataUrl = event.target.result;
     const currentSlideKey = 'slide' + imageCount;
@@ -75,7 +75,9 @@ function setThumbnail(event) {
       currentSlide++;
       showSlide(currentSlide);
     } else if (currentSlide < imageCount && imageCount != 1) {
-      // 이미지가 있는 경우에만 슬라이드 추가
+      // 이미지가 있는 경우에만 빈 슬라이드 추가하지 않음
+      removeSlideIfEmpty(document.getElementById('slide' + (imageCount - 1)));
+      slideCount += 1;
       const sliderContainer = document.getElementById('slider-container');
       const newDiv = document.createElement('div');
       newDiv.className = 'slide';
@@ -101,7 +103,6 @@ function setThumbnail(event) {
 
   reader.readAsDataURL(event.target.files[0]);
 }
-
 
 
 function removeSlide() {
