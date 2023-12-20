@@ -1,99 +1,244 @@
- // 이미지 설정 함수
- function setThumbnail(event) {
-    var reader = new FileReader();
+let currentSlide = 0;
+let slideCount = document.querySelectorAll('.slide').length;
 
-    reader.onload = function(event) {
-      var img = document.createElement("img");
-      img.setAttribute("src", event.target.result);
-      document.querySelector("div#image_container").appendChild(img);
+function removeSlideIfEmpty(removedSlide) {
+  if (removedSlide && !removedSlide.querySelector('img')) {
+    const sliderContainer = document.getElementById('slider-container');
+    sliderContainer.removeChild(removedSlide);
 
-      // 이미지 표시된 개수 확인
-      var imageCount = document.querySelectorAll("div#image_container img").length;
+    // 추가: 슬라이드가 제거된 후에도 빈 슬라이드가 있는지 확인하고 제거
+    const blankSlides = document.querySelectorAll('.slide:empty');
+    blankSlides.forEach(blankSlide => {
+      sliderContainer.removeChild(blankSlide);
+    });
+  }
+}
 
-      // 이미지 개수가 1보다 큰 경우 슬라이더 표시
-      if (imageCount > 1) {
-        document.querySelector(".slider").style.display = "block";
-        document.querySelector(".slider-button").style.display = "block";
-      } else {
-        document.querySelector(".slider").style.display = "none";
-        document.querySelector(".slider-button").style.display = "none";
+
+function removeRecentSlide(removedSlideKey) {
+  const sliderContainer = document.getElementById('slider-container');
+  const slides = sliderContainer.querySelectorAll('.slide');
+  slideCount--;
+
+  if (slides.length > 0) {
+    const uploadedSlides = Array.from(slides).filter(slide => slide.id.startsWith('slide'));
+    const removedSlide = slides[slides.length - 1];
+
+    if (!removedSlide.querySelector('img')) {
+      removedSlide.id = 'slide' + slideCount;
+    }
+
+    const currentSlideDisplay = removedSlide.style.display;
+
+    sliderContainer.removeChild(removedSlide);
+
+    if (currentSlideDisplay === 'block') {
+      const firstUploadedSlide = uploadedSlides.find(slide => slide.id === 'slide1');
+      if (firstUploadedSlide) {
+        firstUploadedSlide.style.display = 'block';
+        currentSlide = 0;
+      } else if (slides.length > 0) {
+        currentSlide = 0;
+        showSlide(currentSlide);
+      }
+    }
+  }
+}
+
+function setThumbnail(event) {
+  var reader = new FileReader();
+  var imageCount;
+
+  reader.onload = function (event) {
+    var img = document.createElement('img');
+    img.setAttribute('src', event.target.result);
+    document.querySelector('#image_container').appendChild(img);
+
+    imageCount = document.querySelectorAll('div#image_container img').length;
+
+    var imageDataUrl = event.target.result;
+    const currentSlideKey = 'slide' + imageCount;
+
+    if (imageCount === 1) {
+      // 초기에 이미지가 없는 경우에만 슬라이드 추가
+      slideCount += 1;
+      const sliderContainer = document.getElementById('slider-container');
+      const newDiv = document.createElement('div');
+      newDiv.className = 'slide';
+      newDiv.id = currentSlideKey;
+      newDiv.innerHTML = '<img src="' + imageDataUrl + '">';
+      sliderContainer.appendChild(newDiv);
+
+      document.querySelector('.slider').style.display = 'none';
+      document.querySelector('.slider-button').style.display = 'none';
+
+      currentSlide++;
+      showSlide(currentSlide);
+    } else if (currentSlide < imageCount && imageCount != 1) {
+      // 이미지가 있는 경우에만 슬라이드 추가
+      const sliderContainer = document.getElementById('slider-container');
+      const newDiv = document.createElement('div');
+      newDiv.className = 'slide';
+      newDiv.id = currentSlideKey;
+      newDiv.innerHTML = '<img src="' + imageDataUrl + '">';
+      sliderContainer.appendChild(newDiv);
+
+      document.querySelector('.slider').style.display = 'block';
+      document.querySelector('.slider-button').style.display = 'block';
+
+      if (imageCount === 2) {
+        const firstSlide = document.getElementById('slide1');
+        if (firstSlide) {
+          firstSlide.style.display = 'block';
+        }
       }
 
-      // 이미지 추가될 때마다 슬라이더 갱신
-      showSlide(currentSlide);
-    };
+      if (currentSlide > 2) {
+        slideCount += 1;
+      }
+    }
+  };
 
-    reader.readAsDataURL(event.target.files[0]);
+  reader.readAsDataURL(event.target.files[0]);
+}
+
+
+
+function removeSlide() {
+  const sliderContainer = document.getElementById('slider-container');
+  const slides = sliderContainer.querySelectorAll('.slide');
+  slideCount--;
+
+  if (slides.length > 0) {
+    const uploadedSlides = Array.from(slides).filter(slide => slide.id.startsWith('slide'));
+    const firstUploadedSlide = uploadedSlides[0];
+    const removedSlide = slides[slides.length - 1];
+
+    if (!removedSlide.querySelector('img')) {
+      removedSlide.id = 'slide' + slideCount;
+    }
+
+    const currentSlideDisplay = removedSlide.style.display;
+
+    sliderContainer.removeChild(removedSlide);
+
+    if (currentSlideDisplay === 'block') {
+      if (firstUploadedSlide) {
+        firstUploadedSlide.style.display = 'block';
+        currentSlide = 0;
+      } else if (slides.length > 0 && removedSlide === slides[slides.length - 1]) {
+        currentSlide = 0;
+        showSlide(currentSlide);
+      }
+    }
   }
+}
 
-  // 게시물 제출 함수
-  function submitPost() {
-    var textValue = document.getElementById("text").value;
-    var imageSrc = document.querySelector("div#image_container img").getAttribute("src");
-
-    // 'textValue'와 'imageSrc'를 서버로 전송 가능
-    // 텍스트와 이미지 URL을 포함한 알림 표시
-    alert("내용: " + textValue + "\n이미지 URL: " + imageSrc);
-  }
-
-// 이미지 삭제 함수
 function removeImage() {
-var imageContainer = document.querySelector("div#image_container");
-var images = imageContainer.querySelectorAll("img");
+  var imageContainer = document.querySelector('div#image_container');
+  var images = imageContainer.querySelectorAll('img');
 
-if (images.length > 1) {
-  imageContainer.removeChild(images[images.length - 1]);
-  // 이미지 삭제 후 슬라이더 갱신
-  showSlide(currentSlide);
-} else if (images.length === 1){
-  // 이미지가 1장일 때 삭제 버튼 클릭 시 슬라이더 및 버튼 숨김
-  document.querySelector(".slider").style.display = "none";
-  document.querySelector(".slider-button").style.display = "none";
+  if (images.length >= 1) {
+    const removedSlideKey = 'slide' + images.length;
+    localStorage.removeItem(removedSlideKey);
 
-  // 이미지가 2개 미만일 때 사진 지우기(새로고침)
-  window.location.href = window.location.href;
-}
+    const removedSlide = document.getElementById(removedSlideKey);
+    const currentSlideDisplay = removedSlide ? removedSlide.style.display : null;
 
-// 이미지가 2장일 때 삭제 버튼 클릭 시 슬라이더 및 버튼 숨김
-if (images.length === 2) {
-  document.querySelector(".slider").style.display = "none";
-  document.querySelector(".slider-button").style.display = "none";
-}
-}
+    removeRecentSlide(removedSlideKey);
 
+    imageContainer.removeChild(images[images.length - 1]);
 
-  // 슬라이더 갱신 함수
-  function showSlide(n) {
-      const slides = document.querySelectorAll('.slide');
-      slides.forEach(slide => slide.style.display = 'none');
-      slides[n].style.display = 'block';
-  }
+    // 해당하는 슬라이드 제거
+    const removedSlideIndex = parseInt(removedSlideKey.replace('slide', ''), 10);
+    const correspondingSlide = document.getElementById('slide' + removedSlideIndex);
+    if (correspondingSlide) {
+      const correspondingSlideDisplay = correspondingSlide.style.display;
+      removeSlideIfEmpty(correspondingSlide);
 
-  let currentSlide = 0;
-    const slideCount = document.querySelectorAll('.slide').length;
-
-    function showSlide(n) {
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach(slide => slide.style.display = 'none');
-        slides[n].style.display = 'block';
+      if (correspondingSlideDisplay === 'block') {
+        // 현재 보고 있는 슬라이드가 삭제되면 첫 번째 슬라이드를 표시
+        const firstSlide = document.getElementById('slide1');
+        if (firstSlide) {
+          showSlide(0);
+          currentSlide = 0;
+        }
+      }
     }
 
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slideCount;
-        showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-        showSlide(currentSlide);
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        showSlide(currentSlide);
-
-        const nextButton = document.getElementById('nextBtn');
-        const prevButton = document.getElementById('prevBtn');
-
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
+    // 삭제 후에 빈 슬라이드도 제거
+    const blankSlides = document.querySelectorAll('.slide:empty');
+    blankSlides.forEach(blankSlide => {
+      removeSlideIfEmpty(blankSlide);
     });
+
+    if (images.length === 1) {
+      currentSlide = 0;
+    } else if (currentSlide === images.length) {
+      currentSlide = 1;
+      showSlide(currentSlide);
+    } else {
+      const firstSlide = document.getElementById('slide1');
+      if (firstSlide) {
+        showSlide(0);
+        currentSlide = 0;
+      } else if (images.length > 0) {
+        currentSlide = 0;
+        showSlide(currentSlide);
+      }
+
+      if (removedSlide && currentSlideDisplay === 'block') {
+        currentSlide = 0;
+        showSlide(currentSlide);
+      }
+    }
+
+    if (images.length === 2) {
+      document.querySelector('.slider').style.display = 'none';
+      document.querySelector('.slider-button').style.display = 'none';
+    }
+  }
+}
+
+
+function showSlide(n) {
+  const slides = document.querySelectorAll('.slide');
+
+  slides.forEach((slide, index) => {
+    if (index === n) {
+      slide.style.display = 'block';
+    } else {
+      slide.style.display = 'none';
+    }
+  });
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slideCount;
+  showSlide(currentSlide);
+}
+
+function prevSlide() {
+  if (currentSlide > 1) {
+    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+    showSlide(currentSlide);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const nextButton = document.getElementById('nextBtn');
+  const prevButton = document.getElementById('prevBtn');
+  console.log(slideCount);
+  nextButton.addEventListener('click', () => {
+    if (currentSlide === slideCount - 1) {
+      currentSlide = 0;
+    } else {
+      currentSlide++;
+    }
+    showSlide(currentSlide);
+  });
+
+  prevButton.addEventListener('click', prevSlide);
+
+  showSlide(currentSlide);
+});
