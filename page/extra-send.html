@@ -29,21 +29,12 @@
   
   
   <!-- 슬라이더에 관한 HTML 코드 -->
-  <div class="slider">
-    <div class="slide">
-      <img src="../images/Asi_01.png">
-    </div>
-    <div class="slide">
-      <img src="../images/KakaoTalk_20230713_092205297.jpg">
-    </div>
-    <div class="slide">
-      <img src="../images/마마.png">
-    </div>
-    <button id="prevBtn" class="slider-button slider-button-left">이전</button>
+  <div class="slider" id="slider-container">
+    <!-- 수정된 부분: 초기에는 아무 이미지가 없는 상태로 시작 -->
+    <div class="slide" style="display: none;"></div>
+    <button id="prevBtn" class="slider-button slider-button-left">이전</button>x`
     <button id="nextBtn" class="slider-button slider-button-right">다음</button>
+    <script src="send.js"></script>
   </div>
 </body>
-<script src="send.js"></script>
-
-<img src="../images/exit.png" class="exit" width="50px" height="50px" OnClick="location.href='extra-home.html'">
 </html>
