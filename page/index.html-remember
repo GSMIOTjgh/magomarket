@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="page/index.css" rel="stylesheet" type="text/css">
+    <link href="index.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-    <form class="border" action="../page/extra-home.html">
+    <form class="border" action="extra-home.html">
         <span class="Welcome-">Welcome !</span>
         <div class="dd"></div>
         <span class="Sign-in-to">Login in to</span>
         <br>
         <span class="tlqkf">Now come get some new ideas</span>
         <br>
-        <span class="gotothesign" Onclick="location.href='../page/extra-membergaib.html'">Go to the sign up!</span>
+        <span class="gotothesign" Onclick="location.href='extra-membergaib.html'">Go to the sign up!</span>
         <div class="classroom"></div>
 
         <div class="usernickname">
