@@ -252,7 +252,7 @@ function createTransaction() {
     // 거래 창 내의 input 요소 찾기
     const moneyInput = dynamicDiv.querySelector('.money');
 
-    // Enter 키를 눌렀을 때 Span으로 변경
+        // Enter 키를 눌렀을 때 Span으로 변경
     moneyInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -272,6 +272,7 @@ function createTransaction() {
                 // 여기서 거래 금액 정보(price)를 활용하여 필요한 작업을 수행할 수 있습니다.
 
                 // 거래 수락 창에서 거래 금액을 표시하는데 사용할 수 있도록 span ID를 반환
+                scrollToBottom(); // 스크롤 아래로 이동
                 return spanId;
             }
         }
