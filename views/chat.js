@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const myName = "건희";
 const Chat = (function() {
     let fileInput; // 전역 변수로 파일 입력 엘리먼트를 선언합니다.
@@ -223,11 +225,8 @@ const observerDynamicChat = new MutationObserver(() => {
 // MutationObserver를 dynamic-chat에 적용합니다.
 observerDynamicChat.observe(dynamicChatDiv, { childList: true });
 
-// createTransaction 함수 수정
+// createTransaction 함수 수정 (닫기 버튼을 거절 X 버튼으로 변경)
 function createTransaction() {
-    // 현재 유저의 이름을 가져옵니다.
-    const currentUser = "유저1"; // 현재 사용자 이름을 가져오는 방법은 해당 로직에 따라 다를 수 있습니다.
-
     // 새로운 div 엘리먼트 생성
     var dynamicDiv = document.createElement('div');
     dynamicDiv.className = 'dynamic-chat';
@@ -235,13 +234,13 @@ function createTransaction() {
     // div에 내용 추가 (거래 메시지 내용 추가)
     dynamicDiv.innerHTML = `
         <div class="Transaction" id="Transaction">
-            <span class="tt" name="tt">${currentUser}님이 거래를 시작하려 합니다</span>
+            <span class="tt" name="tt">${myName}님이 거래를 시작하려 합니다</span>
             <div class="moneyplus" id="moneyplus">
                 <input class="money" name="money" autocomplete="off" maxlength="7" minlength="3" required placeholder="가격을 적어주세요(숫자만)">
             </div>
             <div class="okorno" id="okorno">
-                ${currentUser === "유저1" ? '<span class="ok" onclick="acceptTransaction()">수락 ○</span>' : ''}
-                ${currentUser === "유저1" ? '<span class="no" onclick="rejectTransaction()"> 거절 X</span>' : ''}
+                <span class="ok" onclick="acceptTransaction()">수락 ○</span>
+                <span class="no" onclick="rejectTransaction()"> 거절 X</span>
             </div>
         </div>
     `;
@@ -255,7 +254,7 @@ function createTransaction() {
     // 거래 창 내의 input 요소 찾기
     const moneyInput = dynamicDiv.querySelector('.money');
 
-    // Enter 키를 눌렀을 때 Span으로 변경
+     // Enter 키를 눌렀을 때 Span으로 변경
     moneyInput.addEventListener('keydown', function (e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -275,6 +274,7 @@ function createTransaction() {
                 // 여기서 거래 금액 정보(price)를 활용하여 필요한 작업을 수행할 수 있습니다.
 
                 // 거래 수락 창에서 거래 금액을 표시하는데 사용할 수 있도록 span ID를 반환
+                scrollToBottom(); // 스크롤 아래로 이동
                 return spanId;
             }
         }
@@ -473,11 +473,3 @@ function acceptTransactionWithBankInfo(uniqueId, transactionMessage, transaction
         console.error('Error: Either moneyInput or bankInfoInput is undefined.');
     }
 }
-
-
-
-
-
-
-
-
