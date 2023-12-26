@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const myName = "건희";
 const Chat = (function() {
     let fileInput; // 전역 변수로 파일 입력 엘리먼트를 선언합니다.
