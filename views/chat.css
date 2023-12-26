@@ -55,6 +55,7 @@
     text-align: left;
 }
 
+/* 입력창 스타일 */
 .chat_wrap .input-div {
     position: fixed;
     bottom: 0;
@@ -64,14 +65,27 @@
     border-top: 1px solid #50c4fa;
 }
 
-.chat_wrap .input-div > textarea {
-    width: 82%;
-    height: 80px;
+.chat_wrap .input-div .textarea {
+    width: 90%; /* 수정된 부분: 가로 길이를 90%로 설정 */
+    height: 65px;
     border: none;
     padding: 1px;
-    position: absolute;
-    bottom: 0;
+    text-align: left;
 }
+
+.chat_wrap .input-div .send-button {
+    width: 10%; /* 수정된 부분: 남은 공간을 10%로 설정 */
+    height: 65px;
+    background-color: #50c4fa;
+    text-align: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+
 
 .chat_wrap.dynamic-chat.Transaction {
     width: 100%;
@@ -103,8 +117,19 @@
 }
 
 .bx{
-    width: 100%;
+    width: 90%;
     height: 100%;
+}
+
+.send-button{
+    width: 10%;
+    height: 100%;
+    background-color: #50c4fa;
+    text-align: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    position: absolute;
 }
 
 /* textarea의 너비를 버튼에 맞게 조절하지 않고 그대로 유지합니다 */
@@ -132,6 +157,17 @@
     padding: 10px;
     box-sizing: border-box;
 }
+
+/* 상대방의 채팅 메시지에 더 높은 z-index 값을 부여합니다. */
+div.chat.left ul li {
+    z-index: 1;
+}
+
+/* 채팅 입력창과 버튼의 z-index 값을 낮춰 상대방 메시지 뒤에 위치하도록 조절합니다. */
+#messageInput, #sendMessageButton, #imageInput, .upload-button {
+    z-index: 0;
+}
+
 
 .upload-button {
     width: 15%;
