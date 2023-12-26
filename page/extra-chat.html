@@ -17,6 +17,8 @@
         <div class="input-div">
             <div class="textarea">
                 <textarea class="bx" id="messageInput" placeholder="메시지를 입력해 주세요" maxlength="100" id="text"></textarea>
+                <!-- 메시지 전송 버튼 추가 -->
+                <button id="sendMessageButton" class="send-button" onclick="sendMessage()">전송</button>
             </div>
         </div>
 
@@ -34,8 +36,6 @@
         </div>
     </div>
 
-    
-    
     <button class="upload-button" onclick="uploadimg()">이미지 업로드</button>
     <button class="Transaction-button" onclick="createTransaction()">거래</button>
     <input type="file" id="imageInput" style="display: none;">
@@ -47,4 +47,3 @@
 </body>
 
 </html>
-
