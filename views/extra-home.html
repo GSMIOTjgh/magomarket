@@ -23,6 +23,16 @@
             width: 100px;
             height: 100px;
         }
+        @media (max-width: 400px)  {
+            .scroll{
+                width: 80%;
+            }
+            .button{
+                width: 100%;
+                
+            }
+
+        }
     </style>
     <div class="scroll" style="overflow-x:hidden" style="text-align: center;" class="jiji" id="scroll" method="post">
         <img class="jiji" src="../images/Asi_01.png" style="text-align: center;">
@@ -35,7 +45,7 @@
         <br>
         <img class="jiji" src="../images/KakaoTalk_20230713_092205297.jpg">
     </div>
-    <form method="post" id="picture" style="text-align: center;">
+    <form method="post" id="picture" style="text-align: center;" class="button">
         <img src="../images/chat.png" width="50px" height="50px" Onclick="location.href='extra-chat.html'">
         <img src="../images/Group 1.png" width="50px" height="50px" OnClick="location.href='extra-send.html'">
         <img src="../images/profile.png" width="50px" height="50px" OnClick="location.href='extra-profile.html'">
