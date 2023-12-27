@@ -166,23 +166,8 @@
   .dd{
     margin: 20px 0 0;
   }
-  .Rememebr-me {
-    width: 90px;
-    height: 18px;
-    flex-grow: 0;
-    margin: 0 200px 0 10px;
-    font-family: Poppins;
-    font-size: 12px;
-    font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-  }
 
-  @media (max-width: 400px) {
+  @media all and (min-width:320px) {
     .border {
         width: 90%;
         padding: 20px;
@@ -226,5 +211,5 @@
     .usernickname{
       margin-top: -20%;
     }
-  }
-    
+}
+
