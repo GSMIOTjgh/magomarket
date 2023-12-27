@@ -253,23 +253,43 @@ div.chat.left ul li {
     color: crimson;
 }
 
+
 /* 작은 화면에 대한 반응형 스타일 추가 */
 @media (max-width: 600px) {
-    .upload-button {
+    .upload-button,
+    .Transaction-button,
+    .exit {
         width: 80%;
-        height: 8%;
-        top: calc(50vh - (40vh / 2)); /* 조정된 위치 */
         left: 10%;
     }
 }
 
 /* 중간 크기 화면에 대한 반응형 스타일 추가 */
 @media (max-width: 768px) {
-    .upload-button {
+    .upload-button,
+    .Transaction-button,
+    .exit {
         width: 60%;
-        height: 8%;
-        top: calc(60vh - (48vh / 2)); /* 조정된 위치 */
         left: 10%;
     }
 }
 
+/* 아주 작은 화면에 대한 반응형 스타일 추가 */
+@media (max-width: 400px) {
+    .upload-button{
+        width: 17%;
+        left: 3%;
+    }
+    .Transaction-button{
+        width: 17%;
+        left: 21%;
+    }
+    .exit {
+        width: 10%;
+        left: 40%;
+    }
+    /* 채팅 메시지의 최대 너비를 조정하여 텍스트가 화면에 맞게 보이도록 함 */
+    .chat_wrap .chat ul li > div.message {
+        max-width: 90%;
+    }
+}
