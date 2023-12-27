@@ -166,55 +166,18 @@
   .dd{
     margin: 20px 0 0;
   }
-
-  @media all and (min-width: 320px) {
-    .border {
-        width: 90%;
-        padding: 20px;
-        transform: translate(0%, 0%);
-    }
-
-    .Welcome-,
-    .Sign-in-to,
-    .tlqkf,
-    .Login,
-    .gotothesign {
-        width: auto;
-        margin: 0;
-        text-align: center;
-    }
-
-    .Un,
-    .ps {
-        width: 80%;
-        height: 50%;
-    }
-
-    .inputu {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        margin: 10px 0;
-        height: 50%;
-    }
-
-    .Loginbar {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-        margin: -25px 0;
-    }
-
-    .inputp {
-        width: 81.5%;
-        box-sizing: border-box;
-        padding: 10px;
-        margin: 10px 0;
-        height: 40%;
-    }
-
-    .usernickname {
-        margin-top: -20%;
-    }
-}
-
+  .Rememebr-me {
+    width: 90px;
+    height: 18px;
+    flex-grow: 0;
+    margin: 0 200px 0 10px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
