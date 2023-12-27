@@ -181,3 +181,52 @@
     text-align: left;
     color: #000;
   }
+  @media all and (max-width: 767px) {
+    .border {
+        width: 90%;
+        padding: 20px;
+        transform: translate(0%, 0%);
+    }
+
+    .Welcome-,
+    .Sign-in-to,
+    .tlqkf,
+    .Login,
+    .gotothesign {
+        width: auto;
+        margin: 0;
+        text-align: center;
+    }
+
+    .Un,
+    .ps {
+        width: 100%;
+        height: 50%;
+    }
+
+    .inputu{
+      width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 10px 0;
+        height: 50%;
+    }
+    .inputp {
+        width: 74%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: 10px 0;
+        height: 38%;
+    }
+
+    .Loginbar {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        margin: -25px 0;
+    }
+
+    .usernickname {
+        margin-top: -20%;
+    }
+}
