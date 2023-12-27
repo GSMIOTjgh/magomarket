@@ -181,3 +181,49 @@
     text-align: left;
     color: #000;
   }
+
+  @media (max-width: 400px) {
+    .border {
+        width: 90%;
+        padding: 20px;
+        transform: translate(0%, 0%);
+    }
+
+    .Welcome-,
+    .Sign-in-to,
+    .tlqkf,
+    .Login,
+    .gotothesign {
+        width: auto;
+        margin: 0;
+        text-align: center;
+    }
+    .Un,
+    .ps{
+      width: 80%;
+      height: 50%;
+    }
+    .inputu{
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin: 10px 0;
+      height: 50%;
+    }
+    .Loginbar {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin: -25px 0;
+    }
+    .inputp{
+      width: 81.5%;
+      box-sizing: border-box;
+      padding: 10px;
+      margin: 10px 0;
+      height: 40%;
+    }
+    .usernickname{
+      margin-top: -20%;
+    }
+}
