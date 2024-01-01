@@ -39,7 +39,7 @@ const savedPassword = localStorage.getItem(`${PASSWORD_KEY}_${userCount}`);
 const savedHistory = localStorage.getItem(PAST);
 
 if(savedUsernickname === null && savedPassword === null){
-    window.location.href="membergaib.html";
+    window.location.href="page/extra-membergaib.html";
 }
 else{
     loginForm.addEventListener("submit", Check);
