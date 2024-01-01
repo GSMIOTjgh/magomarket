@@ -19,11 +19,6 @@ function Check(event){
         const savedPassword = localStorage.getItem(`${PASSWORD_KEY}_${i}`);
 
         if (usernickname === savedUsernickname && password === savedPassword) {
-            localStorage.setItem("currentLoggedInUser", i);
-
-            setTimeout(function () {
-                localStorage.removeItem(PAST);
-            }, 0);
             setTimeout(function () {
                 window.location.href = "extra-home.html";
             }, 0);
@@ -36,7 +31,6 @@ function Check(event){
 
 const savedUsernickname = localStorage.getItem(`${USERNICKNAME_KEY}_${userCount}`);
 const savedPassword = localStorage.getItem(`${PASSWORD_KEY}_${userCount}`);
-const savedHistory = localStorage.getItem(PAST);
 
 if(savedUsernickname === null && savedPassword === null){
     window.location.href="page/extra-membergaib.html";
