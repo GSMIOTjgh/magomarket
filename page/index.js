@@ -20,7 +20,7 @@ function Check(event){
 
         if (usernickname === savedUsernickname && password === savedPassword) {
             setTimeout(function () {
-                window.location.href = "extra-home.html";
+                window.location.href = "page/extra-home.html";
             }, 0);
             return;
         }
