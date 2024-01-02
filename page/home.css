@@ -21,7 +21,7 @@
 }
 
 .html {
-    background-image: url(file:///C:/Users/User/Pictures/home.png);
+    background-image: url(../images/home.png);
     background-size: cover;
     background-position: center;
 }
