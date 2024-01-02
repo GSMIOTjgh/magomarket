@@ -10,12 +10,18 @@
 }
 
 .jiji{
-    max-width:100%;
-    max-height:100%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: scale-down;
 }
 
 .b{
     width: 100px;
     height: 100px;
+}
+
+.html {
+    background-image: url(file:///C:/Users/User/Pictures/home.png);
+    background-size: cover;
+    background-position: center;
 }
