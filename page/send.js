@@ -65,7 +65,7 @@ function setThumbnail(event) {
       const newDiv = document.createElement('div');
       newDiv.className = 'slide';
       newDiv.id = currentSlideKey;
-      newDiv.innerHTML = '<img src="' + imageDataUrl + '">';
+      newDiv.innerHTML = '<img src="' + imageDataUrl + '" style="object-fit: contain;">'; // object-fit 스타일 추가
       sliderContainer.appendChild(newDiv);
 
       document.querySelector('.slider').style.display = 'none';
@@ -81,7 +81,7 @@ function setThumbnail(event) {
       const newDiv = document.createElement('div');
       newDiv.className = 'slide';
       newDiv.id = currentSlideKey;
-      newDiv.innerHTML = '<img src="' + imageDataUrl + '">';
+      newDiv.innerHTML = '<img src="' + imageDataUrl + '" style="object-fit: contain;">'; // object-fit 스타일 추가
       sliderContainer.appendChild(newDiv);
 
       document.querySelector('.slider').style.display = 'block';
