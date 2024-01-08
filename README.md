@@ -37,8 +37,8 @@ ______________________________
 
 정도의 기능을 가지고 있어야 한다.
 
-그리고 백엔드 배포는 [cloudtype](https://cloudtype.io/)으로 할 것이다.
+그리고 백엔드 배포는 [**cloudtype**](https://cloudtype.io/)으로 할 것이다.
 
-[백엔드 배포 관련 velog](https://velog.io/@ckdgus5189/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B2%84-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0)
+[**백엔드 배포 관련 velog**](https://velog.io/@ckdgus5189/%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%83%80%EC%9E%85%EC%9C%BC%EB%A1%9C-%EC%84%9C%EB%B2%84-%EB%B0%B0%ED%8F%AC%ED%95%98%EA%B8%B0)
 
 [**프론트 배포 관련 velog(주인장의 velog)**](https://velog.io/@jgh/vercel-%EC%82%AC%EC%9A%A9%EB%B2%95)
